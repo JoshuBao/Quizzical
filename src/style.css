@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background: #1C1C1C;
+    padding: 20px;
+    font-family: 'Karla', sans-serif;
+  }
+  .questionPage{
+    min-width: 550px;
+    min-height: 550px;
+    background:#F5F7FB ;
+    border-radius: 5px;
+    padding:20px;
+    
+
+  }
