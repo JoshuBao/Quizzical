@@ -5,30 +5,26 @@ import axios from "axios";
 import Question from "./Question";
 
 
-function App() {
+export default function App() {
   const [trivia, setTrivia] = React.useState([]);
+  const [tally, setTally] = React.useState(0)
   React.useEffect(function () {
-    console.log("Effect ran")
-    fetch("https://opentdb.com/api.php?amount=10")
+    fetch("https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple")
       .then(res => res.json())
       .then(data => setTrivia(data.results))
   }, [])
-  let questions = trivia.map((q)=>{
-    let opt = q.incorrect_answers
-    opt.push(q.correct_answer)
-    return {
-      question: q.question,
-      correctAns: q.correct_answer,
-      options: this.shuffle(opt)
-    }
-  })
 
-  console.log(trivia)
+
+  function handleClick(){
+    console.log(tally)
+  }
+  const questions = trivia.map(q => <Question questionData={q} setTally={setTally} />)
   return (
     <div>
       <div className="questionPage">
         <h2>hi</h2>
-        <Question questionData={questions} />
+        {questions}
+        <button onClick={handleClick}>Submit</button>
         <h2>hi</h2>
       </div>
       <div>
@@ -40,4 +36,4 @@ function App() {
   )
 }
 
-export default App;
+
